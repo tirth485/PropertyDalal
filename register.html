@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
@@ -52,19 +60,56 @@
                 <a class="aa-property-home" href="index.html">Property Dalal</a>
                 <h4>Create your account and Stay with us</h4>
               </div>
-              <form class="contactform">                                                 
+              <form class="contactform" method="POST" action="./register_handler.php">                                                 
                 <div class="aa-single-field">
                   <label for="name">Name <span class="required">*</span></label>
                   <input type="text" required="required" aria-required="true" value="" name="name">
                 </div>
+
                 <div class="aa-single-field">
                   <label for="email">Email <span class="required">*</span></label>
                   <input type="email" required="required" aria-required="true" value="" name="email">
                 </div>
+
+                
+
+                <div class="aa-single-field">
+                  <label for="name">City <span class="required">*</span></label>
+                  <input type="text" required="required" aria-required="true" value="" name="city">
+                </div>
+                
+                <div class="form-group">
+                  <div class=".col-sm-4 aa-single-field" >
+                    <label for="type">Type of User: <span class="required">*</span></label><br>
+                    <div class="form-check form-check-inline" style="padding-right:10% ;">
+                      
+                      <input class="form-check-input" type="radio" id="agent" name="type" value="agent">
+                      <label for="age1">Agent</label><br>
+                    </div>
+                    
+                    <div class="form-check form-check-inline" style="padding-right:10% ;">
+                      
+                      <input class="form-check-input" type="radio" id="builder" name="type" value="builder">
+                      <label for="age2">Builder</label><br>  
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      
+                      <input class="form-check-input" type="radio" id="individual" name="type" value="individual" selected>
+                      <label for="age3">Individual</label><br><br>
+                    </div>
+                  </div>
+                  <div class=".col-sm-6 aa-single-field">
+                    <label for="name">Phone <span class="required">*</span></label>
+                    <input type="number" style="width: 100%;" required="required" aria-required="true" value="" name="phone">
+                  </div>
+                </div>
+                
                 <div class="aa-single-field">
                   <label for="password">Password <span class="required">*</span></label>
                   <input type="password" name="password"> 
                 </div>
+                
                 <div class="aa-single-field">
                   <label for="confirm-password">Confirm Password <span class="required">*</span></label>
                   <input type="password" name="confirm-password"> 

@@ -1,4 +1,5 @@
 <?php
+// https://remotemysql.com/phpmyadmin/index.php
 $servername = "remotemysql.com";
 $username = "UMHtrZaysp";
 $password = "3N3N6nsb7Z";
