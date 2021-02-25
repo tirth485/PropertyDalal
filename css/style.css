@@ -1325,7 +1325,8 @@ img {
 ====================*/
 
 #aa-property-header {
-  background-image: url("../img/property-header-bg.jpg");
+  /* background-image: url("../img/property-header-bg.jpg"); */
+  background-image: url("../img/slide1/slider-image-4.jpg");
   background-attachment: fixed;
   background-position: center center;
   background-size: cover;
@@ -2474,7 +2475,8 @@ img {
 ====================*/
 
 #aa-signin {
-  background-image: url("../img/signin-bg.jpg");
+  background-image: url("../img/slide1/slider-image-4.jpg");
+  /*background-image: url("../img/signin-bg.jpg");*/
   background-position: center center;
   background-size: cover;
   bottom: 0;
