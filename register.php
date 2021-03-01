@@ -46,7 +46,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  
 
   </head>
   <body>   
@@ -57,10 +56,18 @@
           <div class="aa-signin-area">
             <div class="aa-signin-form">
               <div class="aa-signin-form-title">
+              <?php 
+              session_start();
+              if(isset($_SESSION['email_exist'])){
+                echo "<div class=' alert-danger text-center'><br>Email already exist. <br><br></div>";
+                unset($_SESSION['email_exist']);
+              }
+              ?>
                 <a class="aa-property-home" href="index.html">Property Dalal</a>
                 <h4>Create your account and Stay with us</h4>
               </div>
-              <form class="contactform" method="POST" action="./register_handler.php">                                                 
+              
+              <form class="contactform" method="POST" action="./register_handler.php" name="form1">                                                 
                 <div class="aa-single-field">
                   <label for="name">Name <span class="required">*</span></label>
                   <input type="text" required="required" aria-required="true" value="" name="name">
@@ -107,15 +114,15 @@
                 
                 <div class="aa-single-field">
                   <label for="password">Password <span class="required">*</span></label>
-                  <input type="password" name="password"> 
+                  <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"> 
                 </div>
                 
                 <div class="aa-single-field">
                   <label for="confirm-password">Confirm Password <span class="required">*</span></label>
-                  <input type="password" name="confirm-password"> 
+                  <input type="password" id="confirm-password" name="confirm-password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"> 
                 </div>
                 <div class="aa-single-submit">
-                  <input type="submit" value="Create Account" name="submit">                    
+                  <input type="submit" value="Create Account" name="submit" id="submit" onclick="return CheckPassword()"/>                   
                 </div>
               </form>
             </div>
@@ -143,4 +150,21 @@
   <script src="js/custom.js"></script> 
   
   </body>
+    
+  <script>
+    function CheckPassword() 
+    {
+        let inputVal1 = document.getElementById("password").value;
+        let inputVal2 = document.getElementById("confirm-password").value;
+        if(inputVal1 == inputVal2)
+        {
+          return true;
+        }
+        else
+        {
+          alert("Both Password does not match");
+          return false;
+        }
+    }
+</script>
 </html>

@@ -52,7 +52,7 @@
                 <a class="aa-property-home" href="index.html">Property Dalal</a>
                 <h4>Sign in to your account</h4>
               </div>
-              <form class="contactform">                                                 
+              <form class="contactform" name="form_login" method="POST" action="./signin_handler.php">                                                 
                 <div class="aa-single-field">
                   <label for="email">Email <span class="required">*</span></label>
                   <input type="email" required="required" aria-required="true" value="" name="email">
@@ -68,7 +68,7 @@
                 </div> 
                 <div class="aa-single-submit">
                   <input type="submit" value="Send Message" class="aa-browse-btn" name="submit">  
-                  <p>Don't Have A Account Yet? <a href="register.html">CREATE NOW!</a></p>
+                  <p>Don't Have A Account Yet? <a href="register.php">CREATE NOW!</a></p>
                 </div>
               </form>
             </div>
