@@ -22,7 +22,7 @@ try {
     //Recipients
     $mail->setFrom('vs2147136@gmail.com', 'Property Dalal');
     $mail->addAddress('tirthshah485@gmail.com', 'Tirth Shah');     //Add a recipient
-    $mail->addAddress('49yash@gmail.com');              //Name is optional
+   // $mail->addAddress('49yash@gmail.com');              //Name is optional
     $mail->addReplyTo('tirthshah485@gmail.com', 'Information');
    /* $mail->addCC('cc@example.com');
     $mail->addBCC('bcc@example.com');
