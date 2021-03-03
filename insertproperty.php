@@ -77,15 +77,26 @@
                 //$monthly=$_POST['monthly'];
                 $address=$_POST['address'];
                 $type=$_POST['type'];
+                // echo "Post set?".($_POST["images"]);
+                
+                // echo "Image set?".isset($_FILES["images"]);
                 $target_dir="uploads/";
-                $target_file= $target_dir . basename($_FILES["images"]["name"]);
+                // echo "Set thayu?".isset($_FILES['images']);
+                $target_file= $target_dir . basename($_FILES["xxx"]["name"]);
+                echo "#######<br>";
                 print_r($target_file);
-                $temp_file=$_FILES["images"]["name"];
-                move_uploaded_file($_FILES["images"]["tmp_name"], $target_file);
+                echo "#######<br>";
+                print_r($_FILES);
+                $temp_file=$_FILES["xxx"]["name"];
+                echo "#######<br>";
+                print_r($temp_file);
+                echo "#######<br>";
+                
+                move_uploaded_file($_FILES["xxx"]["tmp_name"], $target_file);
                 $description=mysqli_real_escape_string($mysqli ,$_POST['description']);
                 $price=$_POST['price'];
                 
-                $query="INSERT INTO propety (name,address,type,image,description,price) VALUES ('$name','$address','$type','$temp_file','$description','$price')";
+                $query="INSERT INTO property (name,address,type,image,description,price) VALUES ('$name','$address','$type','$temp_file','$description','$price')";
                 $insert=$mysqli->query($query);
                 $last_id = $mysqli->insert_id;
                 $c=count($_FILES['img']['name']);
@@ -112,7 +123,7 @@
             
             
                 ?>
-                <form class="propertyadd" method="POST" action="" >                                                 
+                <form method="POST" action="#"  enctype="multipart/form-data">                                                 
                 <div class="aa-single-field">
                  <label for="inputEmail" class="col-lg-2 control-label">Name Of Property</label>
                  <input type="text" name="name" class="form-control"  placeholder="Name Of Property">
@@ -126,10 +137,10 @@
                 <label for="inputPassword" class="col-lg-2 control-label">type</label>
                 <input type="text" name="type" class="form-control"  placeholder="buy or sell">
                 </div>
-                <div class="aa-single-field">
+                
                 <label for="textArea" class="col-lg-2 control-label">Featured Image</label>
-                <input type="file" name="images">
-                </div>
+                <input type="file" name="xxx" id="fileSelect"><br><br> 
+                
                 <div class="aa-single-field">
                 <label for="textArea" class="col-lg-2 control-label">Rooms Images</label>
                 <input type="file" name="img[]" multiple>
