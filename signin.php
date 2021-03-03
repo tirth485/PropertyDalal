@@ -1,4 +1,6 @@
+
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -50,6 +52,14 @@
             <div class="aa-signin-form">
               <div class="aa-signin-form-title">
                 <a class="aa-property-home" href="index.html">Property Dalal</a>
+                <?php 
+                session_start();
+                if(isset($_SESSION['invalid_user'])  )//&& $_SESSION['invalid_user']==1
+                {
+                  unset($_SESSION['invalid_user']);
+                  echo "<div class=' alert-danger text-center'><br>Invalid Email/Password. <br><br></div>";
+                }
+                ?>
                 <h4>Sign in to your account</h4>
               </div>
               <form class="contactform" name="form_login" method="POST" action="./signin_handler.php">                                                 
@@ -59,11 +69,11 @@
                 </div>
                 <div class="aa-single-field">
                   <label for="password">Password <span class="required">*</span></label>
-                  <input type="password" name="password"> 
+                  <input type="password" name="password" required="required"> 
                 </div>
                 <div class="aa-single-field">
                 <label>
-                  <input type="checkbox"> Remember me
+                  <input type="checkbox" name="remember"> Remember me
                 </label>                                                          
                 </div> 
                 <div class="aa-single-submit">
