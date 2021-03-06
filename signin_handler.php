@@ -5,7 +5,7 @@
         $email=$_POST['email'];
         $user_password=md5($_POST['password']);
 
-        $stmt = $conn->prepare("Select userid from Users where email=? and password=?;");
+        $stmt = $conn->prepare("Select userid,name from Users where email=? and password=?;");
         $stmt->bind_param('ss',$email,$user_password);
         $stmt->execute();
         
@@ -14,8 +14,10 @@
         
         if($num_rows>0){
             // echo ($result_set->fetch_array(MYSQLI_BOTH))['userid'];
-            $_SESSION['userid']=($result_set->fetch_array(MYSQLI_BOTH))['userid'];
-            header("Location: http://".$_SERVER['SERVER_NAME']."/PropertyDalal/index.html");
+            $result_array=($result_set->fetch_array(MYSQLI_BOTH));
+            $_SESSION['userid']=$result_array['userid'];
+            $_SESSION['name']=$result_array['name'];
+            header("Location: http://".$_SERVER['SERVER_NAME']."/PropertyDalal/index.php");
         }
         else{
             $_SESSION['invalid_user']=1;
