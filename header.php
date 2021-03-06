@@ -1,5 +1,8 @@
-<html>
-<head>
+<?php 
+  session_start(); 
+?>
+  <html><head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
@@ -48,7 +51,7 @@
   <!-- END SCROLL TOP BUTTON -->
 
   <!-- Start header section -->
-  <header id="aa-header">  
+  <div id="aa-header">  
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -68,7 +71,7 @@
               <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="aa-header-right">
                   <?php
-                    session_start();
+                    
                     
                     if(isset($_SESSION['userid']) && isset($_SESSION['name'])){
                       echo "<a href='#' class='aa-register'>".$_SESSION['userid']."</a>";
@@ -89,5 +92,7 @@
         </div>
       </div>
     </div>
-  </header>
+  </div>
+  </body>
   </html>
+  
