@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require('connection.php');
     if(isset($_POST['submit'])){
 
@@ -24,8 +25,9 @@
         move_uploaded_file($_FILES["feature_image"]["tmp_name"], $target_file);
         $description=mysqli_real_escape_string($conn ,$_POST['description']);
         $price=$_POST['price'];
-        
-        $query="INSERT INTO property (name,address,type,image,description,price) VALUES ('$name','$address','$type','$temp_file','$description','$price')";
+        $sqft=$_POST['sqft'];
+        $userid=$_SESSION['userid'];
+        $query="INSERT INTO property (name,address,type,image,description,price,userid,sqft) VALUES ('$name','$address','$type','$temp_file','$description','$price','$userid','$sqft')";
         $insert=$conn->query($query);
         $last_id = $conn->insert_id;
         $c=count($_FILES['property_images']['name']);
@@ -46,7 +48,8 @@
             }
     
         }
-    
+    $_SESSION['property_inserted']=1;
+    header("Location: "."./insertproperty.php");
     
     }
 ?>

@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-  <?php require('header.php');?>
+  <!-- Start header section -->
+  <?php 
+  require('header.php');
+  require_once('connection.php');
+  ?>
   <!-- End header section -->
 
   <!-- Start menu section -->
@@ -46,87 +50,48 @@
       <!-- Top slider -->
       <div class="aa-top-slider">
         <!-- Top slider single slide -->
-        <div class="aa-top-slider-single">
-          <img src="img/Propertypic/1.jpg" alt="img">
-          <!-- Top slider content -->
-          <div class="aa-top-slider-content">
-            <span class="aa-top-slider-catg">Duplex</span>
-            <h2 class="aa-top-slider-title">1560 Square Feet</h2>
-            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Anjuna Beach, Goa</p>
-            <span class="aa-top-slider-off">30% OFF</span>
-            <p class="aa-top-slider-price">$460,000</p>
-            <a href="#" class="aa-top-slider-btn">Read More <span class="fa fa-angle-double-right"></span></a>
-          </div>
+        
+
+        <?php 
+          $stmt = $conn->prepare("Select name,price,type,address,image,sqft from property");
+          $stmt->bind_result($pname,$price,$ptype,$paddress,$pimage,$sqft);
+          $stmt->execute();
+          $stmt->store_result();
+          $result_size=$stmt->num_rows;
+          $stmt->execute();
+          $i=0;
+          
+          while($i<$result_size){
+          $stmt->data_seek($i);
+          $stmt->fetch();
+          // echo $pname."-".$price."-".$ptype."-".$paddress."-".$pimage;
+          $i++;
+        
+        
+          echo "
+          <div class='aa-top-slider-single'><img src='uploads/$pimage' alt='img'>
+          
+          <div class='aa-top-slider-content'>
+            <span class='aa-top-slider-catg'>$sqft</span>
+            <h2 class='aa-top-slider-title'> $pname</h2>
+            <p class='aa-top-slider-location'><i class='fa fa-map-marker'></i> $paddress</p>
+            <span class='aa-top-slider-off'> $ptype</span>
+            <p class='aa-top-slider-price'>$ $price</p>
+            <a href='#' class='aa-top-slider-btn'>Read More <span class='fa fa-angle-double-right'></span></a>
+          </div></div>
+         ";
+        } ?>
           <!-- / Top slider content -->
         </div>
-        <!-- / Top slider single slide -->
-        <!-- Top slider single slide -->
-        <div class="aa-top-slider-single">
-          <img src="img/Propertypic/2.jpg" alt="img">
-          <!-- Top slider content -->
-          <div class="aa-top-slider-content">
-            <span class="aa-top-slider-catg">Duplex</span>
-            <h2 class="aa-top-slider-title">1230 Square Feet</h2>
-            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Malhar resorts,Dahegam</p>
-            <span class="aa-top-slider-off">10% OFF</span>
-            <p class="aa-top-slider-price">$254,000</p>
-            <a href="#" class="aa-top-slider-btn">Read More <span class="fa fa-angle-double-right"></span></a>
-          </div>
-          <!-- / Top slider content -->
-        </div>
-        <!-- / Top slider single slide -->
-        <!-- Top slider single slide -->
-        <div class="aa-top-slider-single">
-          <img src="img/Propertypic/3.jpg" alt="img">
-          <!-- Top slider content -->
-          <div class="aa-top-slider-content">
-            <span class="aa-top-slider-catg">Duplex</span>
-            <h2 class="aa-top-slider-title">1150 Square Feet</h2>
-            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Gift city,Gandhinager</p>
-            <span class="aa-top-slider-off">20% OFF</span>
-            <p class="aa-top-slider-price">$360,000</p>
-            <a href="#" class="aa-top-slider-btn">Read More <span class="fa fa-angle-double-right"></span></a>
-          </div>
-          <!-- / Top slider content -->
-        </div>
-        <!-- / Top slider single slide -->       
-         <!-- Top slider single slide -->
-        <div class="aa-top-slider-single">
-          <img src="img/Propertypic/4.jpg" alt="img">
-          <!-- Top slider content -->
-          <div class="aa-top-slider-content">
-            <span class="aa-top-slider-catg">Duplex</span>
-            <h2 class="aa-top-slider-title">2178 Square Feet</h2>
-            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>South Beach, Miami (USA)</p>
-            <span class="aa-top-slider-off">30% OFF</span>
-            <p class="aa-top-slider-price">$460,000</p>
-            <a href="#" class="aa-top-slider-btn">Read More <span class="fa fa-angle-double-right"></span></a>
-          </div>
-          <!-- / Top slider content -->
-        </div>
-        <!-- / Top slider single slide -->        
-         <!-- Top slider single slide -->
-        <div class="aa-top-slider-single">
-          <img src="img/Propertypic/1.jpg" alt="img">
-          <!-- Top slider content -->
-          <div class="aa-top-slider-content">
-            <span class="aa-top-slider-catg">Duplex</span>
-            <h2 class="aa-top-slider-title">7500 Square Feet</h2>
-            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>Anjuna Beach, Goa</p>
-            <span class="aa-top-slider-off">30% OFF</span>
-            <p class="aa-top-slider-price">$460,000</p>
-            <a href="#" class="aa-top-slider-btn">Read More <span class="fa fa-angle-double-right"></span></a>
-          </div>
-          <!-- / Top slider content -->
-        </div>
+       
         <!-- / Top slider single slide -->
          <!-- Top slider single slide -->
         
          
           
-        <!-- / Top slider single slide -->
+       
       </div>
-    </div>
+    
   </section>
   <!-- End slider  -->
 

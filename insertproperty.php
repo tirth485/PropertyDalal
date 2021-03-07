@@ -9,6 +9,7 @@
   }
   else{
     //User has not logged in so property cannot be inserted...
+    // echo $_SERVER['SERVER_NAME'];
     header("Location: ".$_SERVER['SERVER_NAME']."/index.php");
   }
 ?>
@@ -61,8 +62,15 @@
         <div class="col-md-12">
           <div class="aa-signin-area">
             <div class="aa-signin-form">
+
+            <?php
+            // If Property Added then show a message 
+                if(isset($_SESSION['property_inserted']) && $_SESSION['property_inserted']==1){
+                  echo "<div class='alert alert-success text-center'>Property Added Successfully</div>";
+                  unset($_SESSION['property_inserted']);
+                } ?>
+
               <div class="aa-signin-form-title">
-                
                 <p class="h1">Add Property</p>
                 <br>
               
@@ -83,12 +91,12 @@
                   </div>
                   <div class="col-lg-6">
                     <div class="form-check form-check-inline" style="padding-right:10% ;">
-                      <input class="form-check-input" type="radio" id="sell" name="type" value="sell">
+                      <input class="form-check-input" type="radio" id="sell" name="type" value="Sell">
                       <label for="age1">Sell</label><br>
                     </div>
                     
                     <div class="form-check form-check-inline" style="padding-right:10% ;">
-                      <input class="form-check-input" type="radio" id="rent" name="type" value="rent">
+                      <input class="form-check-input" type="radio" id="rent" name="type" value="Rent">
                       <label for="age2">Rent</label><br>  
                     </div>
                   </div>
@@ -113,6 +121,11 @@
                 <div class="aa-single-field">
                   <label for="inputPassword" class="col-lg-2 control-label">Monthly Charge</label>
                   <input type="number" name="price" class="col-lg-10 form-control"  placeholder="Monthly Charge">
+                </div>
+
+                <div class="aa-single-field">
+                  <label for="inputPassword" class="col-lg-2 control-label">Size of Property</label>
+                  <input type="number" name="sqft" class="col-lg-10 form-control"  placeholder="Size in Square Feet">
                 </div>
                 
                 <div class="aa-single-field">
