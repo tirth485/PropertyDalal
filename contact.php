@@ -165,7 +165,7 @@
                 <p>Your email address will not be published. Required fields are marked <strong class="required">*</strong></p>
               </div>
               <div class="aa-contact-form">
-                <form class="contactform" method="post" action="feedback_success.php">                  
+                <form class="contactform" method="post" action="./feedback_success.php" name="form2">                  
                   <p class="comment-form-author">
                     <label for="author">Name <span class="required">*</span></label>
                     <input type="text" name="author" value="" size="30" required="required">
