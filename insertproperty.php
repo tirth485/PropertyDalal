@@ -2,7 +2,7 @@
 <html lang="en">
 <?php 
   session_start();
-  require('header.php');
+ // require('header.php');
   
   if (isset($_SESSION['userid'])){
     //User has logged in so property can be inserted...
@@ -84,10 +84,20 @@
                   <textarea class="form-control col-lg-10 " placeholder="Enter Address of Property " name="address" rows="3" id="textArea"></textarea>
                 </div>
                 
-                <div class=" aa-single-field" >
-              
-                  <div class="col-lg-3">
-                    <label for="type" class="control-label">Sell or Rent? <span class="required">*</span></label><br>
+                <div class="aa-single-field">
+                    <label for="type" class="col-lg-2 control-label">Type<span class="required">*</span></label>
+                    <select id="" name="Category">
+                    
+                    <option value="flat">Flat</option>
+                    <option value="land">Land</option>
+                    <option value="plot">Plot</option>
+                    <option value="comercial">Commercial</option>
+                  </select>
+                </div>
+                
+
+                <div class="col-lg-3">
+                    <label for="type" class="control-label">Sell or Rent? </label><br>
                   </div>
                   <div class="col-lg-6">
                     <div class="form-check form-check-inline" style="padding-right:10% ;">
