@@ -150,33 +150,17 @@
         <div class="col-md-8">
           <div class="aa-properties-content">            
             <!-- Start properties content body -->
-
-
-
             
             <?php
-            $stmt = $conn->prepare("Select name,price,address,sqft,description from property where pid='10'");
-            $stmt->bind_result($pname,$price,$paddress,$sqft,$description);
-            $stmt->execute();
-            $stmt->store_result();
-            //$stmt->execute();
-
-            $stmt1 = $conn->prepare("Select images from details where proid='2'");
-            $stmt1->bind_result($image);
-            $stmt1->execute();
-            $stmt1->store_result();
-            $result_size=$stmt1->num_rows;
-            $stmt1->execute();
-            $i=0;
-            while($i<$result_size){
-                $stmt1->data_seek($i);
-                $stmt1->fetch();
-               // echo $image;
-                $i++;
-              
-              
-                echo "
-                <!-- Start slider  -->
+           
+            $propid=11;
+            $stmt = $conn->prepare("Select images from details where proid='$propid'");
+            if($stmt->execute() === TRUE)
+            {
+                $result = $stmt->get_result();
+                while ($row = $result->fetch_assoc()) {
+                    $image = $row['images'];
+                    echo "
                     <section id='aa-slider'>
                         <div class='aa-slider-area'> 
                             <div class='aa-top-slider'>
@@ -184,21 +168,38 @@
                                     <div class='aa-top-slider-single'><img src='uploads/$image' alt='img'> 
                             </div>
                         </div>
-                    </selection>
+                    </section>
                     ";
+                }
             }
+            
 
-            echo "
-             <h1>hello</h1>
-             <div class='aa-properties-info'>
-               <h2>$pname</h2>
-               <span class='aa-price'>$price</span>
-               <p>$description</p>
-               <h4>Propery Features</h4>
-               <p>$paddress</p>
-               
-               
-                ";
+            
+            $stmt = $conn->prepare("Select * from property where pid='$propid'");
+            if($stmt->execute() === TRUE)
+            {
+                $result = $stmt->get_result();
+                while ($row = $result->fetch_assoc()) {
+                   
+                    $name =$row['name'];
+                    $address =$row['address'];
+                    $type =$row['type'];
+                    // $image =$row['image'];
+                    $description =$row['description']; 
+                    $price =$row['price']; 
+                    $userid =$row['userid']; 
+                    $sqft =$row['sqft']; 
+                    $category =$row['category'];
+
+                    echo "
+                    <h3>$name</h3><br>
+                    <h3>$address</h3><br>
+                    <h3>$type</h3><br>
+                    <h3>$description</h3><br>
+                    
+                    ";
+                }
+            }
             ?>
                <h4>Property Video</h4>
                <iframe width="100%" height="480" src="https://www.youtube.com/embed/CegXQps0In4" frameborder="0" allowfullscreen></iframe>

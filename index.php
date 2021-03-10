@@ -56,7 +56,7 @@
           // $stmt = $conn->prepare("Select name,price,type,address,image,sqft from property");
           // $stmt->bind_result($pname,$price,$ptype,$paddress,$pimage,$sqft);
           $stmt = $conn->prepare("Select name,price,type,address,image,sqft,description,category from property;");
-          ($stmt->bind_result($pname,$price,$ptype,$paddress,$pimage,$sqft,$description,$category));
+          $stmt->bind_result($pname,$price,$ptype,$paddress,$pimage,$sqft,$description,$category);
           $stmt->execute();
           $stmt->store_result();
           $result_size=$stmt->num_rows;
