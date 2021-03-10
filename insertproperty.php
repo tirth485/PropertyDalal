@@ -2,7 +2,7 @@
 <html lang="en">
 <?php 
   session_start();
- // require('header.php');
+ require('header.php');
   
   if (isset($_SESSION['userid'])){
     //User has logged in so property can be inserted...
@@ -10,7 +10,7 @@
   else{
     //User has not logged in so property cannot be inserted...
     // echo $_SERVER['SERVER_NAME'];
-    header("Location: ".$_SERVER['SERVER_NAME']."/index.php");
+    header("Location: http://".$_SERVER['SERVER_NAME']."/PropertyDalal/index.php");
   }
 ?>
   <head>

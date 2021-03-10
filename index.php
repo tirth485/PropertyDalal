@@ -6,7 +6,7 @@
   require_once('connection.php');
   ?>
   <!-- End header section -->
-
+  <body>
   <!-- Start menu section -->
   <section id="aa-menu-area">
     <nav class="navbar navbar-default main-navbar" role="navigation">  
@@ -53,8 +53,10 @@
         
 
         <?php 
-          $stmt = $conn->prepare("Select name,price,type,address,image,sqft from property");
-          $stmt->bind_result($pname,$price,$ptype,$paddress,$pimage,$sqft);
+          // $stmt = $conn->prepare("Select name,price,type,address,image,sqft from property");
+          // $stmt->bind_result($pname,$price,$ptype,$paddress,$pimage,$sqft);
+          $stmt = $conn->prepare("Select name,price,type,address,image,sqft,description,category from property;");
+          ($stmt->bind_result($pname,$price,$ptype,$paddress,$pimage,$sqft,$description,$category));
           $stmt->execute();
           $stmt->store_result();
           $result_size=$stmt->num_rows;
@@ -83,13 +85,7 @@
         } ?>
           <!-- / Top slider content -->
         </div>
-       
-        <!-- / Top slider single slide -->
-         <!-- Top slider single slide -->
-        
-         
-          
-       
+      
       </div>
     
   </section>
@@ -210,7 +206,7 @@
   <!-- / About us -->
 
   <!-- Latest property -->
-  <section id="aa-latest-property">
+   <section id="aa-latest-property">
     <div class="container">
       <div class="aa-latest-property-area">
         <div class="aa-title">
@@ -220,179 +216,59 @@
         </div>
         <div class="aa-latest-properties-content">
           <div class="row">
-            <div class="col-md-4">
-              <article class="aa-properties-item">
-                <a href="#" class="aa-properties-item-img">
-                  <img src="img/demo/property-1.jpg" alt="img">
+          
+           
+           
+        <?php 
+          $stmt->execute();
+          $stmt->store_result();
+          $result_size=$stmt->num_rows;
+          $stmt->execute();
+          $i=0;
+          
+          while($i<$result_size){
+          $stmt->data_seek($i);
+          $stmt->fetch();
+          
+          $i++;
+        
+        
+          echo "
+            <div class='col-md-4'>
+              <article class='aa-properties-item'>
+                <a href='#' class='aa-properties-item-img'>
+                  <img src='uploads/$pimage' alt='img'>
                 </a>
-                <div class="aa-tag for-sale">
-                  For Sale
+                <div class='aa-tag for-sale'>
+                  For $ptype
                 </div>
-                <div class="aa-properties-item-content">
-                  <div class="aa-properties-info">
-                    <span>5 Rooms</span>
-                    <span>2 Beds</span>
-                    <span>3 Baths</span>
-                    <span>1100 SQ FT</span>
+                <div class='aa-properties-item-content'>
+                  <div class='aa-properties-info'>
+                    <span>$category</span>
+                    <span>$sqft SQ FT</span>
                   </div>
-                  <div class="aa-properties-about">
-                    <h3><a href="#">Tirth Villa</a></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
+                  <div class='aa-properties-about'>
+                    <h3><a href='#'>$pname</a></h3>
+                    <p>$description</p>                      
                   </div>
-                  <div class="aa-properties-detial">
-                    <span class="aa-price">
-                      $35000
+                  <div class='aa-properties-detial'>
+                    <span class='aa-price'>
+                      $ $price
                     </span>
-                    <a href="#" class="aa-secondary-btn">View Details</a>
+                    <a href='#' class='aa-secondary-btn'>View Details</a>
                   </div>
                 </div>
               </article>
             </div>
-            <div class="col-md-4">
-              <article class="aa-properties-item">
-                <a href="#" class="aa-properties-item-img">
-                  <img src="img/demo/property-2.jpg" alt="img">
-                </a>
-                <div class="aa-tag for-rent">
-                  For Rent
-                </div>
-                <div class="aa-properties-item-content">
-                  <div class="aa-properties-info">
-                    <span>5 Rooms</span>
-                    <span>2 Beds</span>
-                    <span>3 Baths</span>
-                    <span>1100 SQ FT</span>
-                  </div>
-                  <div class="aa-properties-about">
-                    <h3><a href="#">Shivam Appartment</a></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
-                  </div>
-                  <div class="aa-properties-detial">
-                    <span class="aa-price">
-                      $11000
-                    </span>
-                    <a href="#" class="aa-secondary-btn">View Details</a>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-md-4">
-              <article class="aa-properties-item">
-                <a href="#" class="aa-properties-item-img">
-                  <img src="img/demo/property-3.jpg" alt="img">
-                </a>
-                <div class="aa-tag sold-out">
-                  Sold Out
-                </div>
-                <div class="aa-properties-item-content">
-                  <div class="aa-properties-info">
-                    <span>5 Rooms</span>
-                    <span>2 Beds</span>
-                    <span>3 Baths</span>
-                    <span>1100 SQ FT</span>
-                  </div>
-                  <div class="aa-properties-about">
-                    <h3><a href="#">Navkar Bunglowz</a></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
-                  </div>
-                  <div class="aa-properties-detial">
-                    <span class="aa-price">
-                      $15000
-                    </span>
-                    <a href="#" class="aa-secondary-btn">View Details</a>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-md-4">
-              <article class="aa-properties-item">
-                <a href="#" class="aa-properties-item-img">
-                  <img src="img/demo/property-4.jpg" alt="img">
-                </a>
-                <div class="aa-tag for-sale">
-                  For Sale
-                </div>
-                <div class="aa-properties-item-content">
-                  <div class="aa-properties-info">
-                    <span>5 Rooms</span>
-                    <span>2 Beds</span>
-                    <span>3 Baths</span>
-                    <span>1100 SQ FT</span>
-                  </div>
-                  <div class="aa-properties-about">
-                    <h3><a href="#">Vatsaly Appartment</a></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
-                  </div>
-                  <div class="aa-properties-detial">
-                    <span class="aa-price">
-                      $35000
-                    </span>
-                    <a href="#" class="aa-secondary-btn">View Details</a>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-md-4">
-              <article class="aa-properties-item">
-                <a href="#" class="aa-properties-item-img">
-                  <img src="img/demo/property-5.jpg" alt="img">
-                </a>                
-                <div class="aa-tag sold-out">
-                  Sold Out
-                </div>
-                <div class="aa-properties-item-content">
-                  <div class="aa-properties-info">
-                    <span>5 Rooms</span>
-                    <span>2 Beds</span>
-                    <span>3 Baths</span>
-                    <span>1100 SQ FT</span>
-                  </div>
-                  <div class="aa-properties-about">
-                    <h3><a href="#">Dev Vihan</a></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
-                  </div>
-                  <div class="aa-properties-detial">
-                    <span class="aa-price">
-                      $11000
-                    </span>
-                    <a href="#" class="aa-secondary-btn">View Details</a>
-                  </div>
-                </div>
-              </article>
-            </div>
-            <div class="col-md-4">
-              <article class="aa-properties-item">
-                <a href="#" class="aa-properties-item-img">
-                  <img src="img/demo/property-6.jpg" alt="img">
-                </a>
-                <div class="aa-tag for-rent">
-                  For Rent
-                </div>
-                <div class="aa-properties-item-content">
-                  <div class="aa-properties-info">
-                    <span>5 Rooms</span>
-                    <span>2 Beds</span>
-                    <span>3 Baths</span>
-                    <span>1100 SQ FT</span>
-                  </div>
-                  <div class="aa-properties-about">
-                    <h3><a href="#">Kala Tirth</a></h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
-                  </div>
-                  <div class="aa-properties-detial">
-                    <span class="aa-price">
-                      $15000
-                    </span>
-                    <a href="#" class="aa-secondary-btn">View Details</a>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
+            ";
+          }
+         ?>
+ 
+         </div>
         </div>
       </div>
     </div>
-  </section>
+  </section> 
   <!-- / Latest property -->
 
   <!-- Service section -->

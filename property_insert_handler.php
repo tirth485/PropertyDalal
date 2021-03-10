@@ -13,14 +13,14 @@
         $target_dir="uploads/";
         // echo "Set thayu?".isset($_FILES['images']);
         $target_file= $target_dir . basename($_FILES["feature_image"]["name"]);
-        echo "#######<br>";
+        // echo "#######<br>";
         print_r($target_file);
-        echo "#######<br>";
+        // echo "#######<br>";
         print_r($_FILES);
         $temp_file=$_FILES["feature_image"]["name"];
-        echo "#######<br>";
+        // echo "#######<br>";
         print_r($temp_file);
-        echo "#######<br>";
+        // echo "#######<br>";
         
         move_uploaded_file($_FILES["feature_image"]["tmp_name"], $target_file);
         $description=mysqli_real_escape_string($conn ,$_POST['description']);
