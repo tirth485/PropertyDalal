@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php 
+ // require('header.php');
+  require_once('connection.php');
+  ?>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -146,38 +150,60 @@
         <div class="col-md-8">
           <div class="aa-properties-content">            
             <!-- Start properties content body -->
-            <div class="aa-properties-details">
-             <div class="aa-properties-details-img">
-               <img src="img/slider/1.jpg" alt="img">
-               <img src="img/slider/2.jpg" alt="img">
-               <img src="img/slider/3.jpg" alt="img">
-             </div>
-             <div class="aa-properties-info">
-               <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, alias!</h2>
-               <span class="aa-price">$65000</span>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae voluptatibus veniam non voluptate, ipsa eius magni aliquid ratione sit, odio reprehenderit in quis repudiandae dolor.</p>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet consequatur, veritatis, ducimus in aliquam magnam voluptatibus ullam libero fugiat temporibus at, aliquid explicabo placeat eligendi, assumenda magni saepe eius consequuntur.</p>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium dicta aliquid, autem, cum, impedit nostrum, rem molestias quisquam ab iure enim totam? Itaque esse ut adipisci officiis nulla repellendus ratione dolore, iste ex doloribus tenetur eos provident quam quasi maxime.</p>
-               <h4>Propery Features</h4>
-               <ul>
-                 <li>4 Bedroom</li>
-                 <li>3 Baths</li>
-                 <li>Kitchen</li>
-                 <li>Air Condition</li>
-                 <li>Belcony</li>
-                 <li>Gym</li>
-                 <li>Garden</li>
-                 <li>CCTV</li>
-                 <li>Children Play Ground</li>
-                 <li>Comunity Center</li>
-                 <li>Security System</li>
-               </ul>
+            
+            <?php
+           
+            $propid=11;
+            $stmt = $conn->prepare("Select images from details where proid='$propid'");
+            if($stmt->execute() === TRUE)
+            {
+                $result = $stmt->get_result();
+                while ($row = $result->fetch_assoc()) {
+                    $image = $row['images'];
+                    echo "
+                    <section id='aa-slider'>
+                        <div class='aa-slider-area'> 
+                            <div class='aa-top-slider'>
+                                <!-- Top slider single slide -->
+                                    <div class='aa-top-slider-single'><img src='uploads/$image' alt='img'> 
+                            </div>
+                        </div>
+                    </section>
+                    ";
+                }
+            }
+            
+            $stmt = $conn->prepare("Select * from property where pid='$propid'");
+            if($stmt->execute() === TRUE)
+            {
+                $result = $stmt->get_result();
+                while ($row = $result->fetch_assoc()) {
+                   
+                    $name =$row['name'];
+                    $address =$row['address'];
+                    $type =$row['type'];
+                    // $image =$row['image'];
+                    $description =$row['description']; 
+                    $price =$row['price']; 
+                    $userid =$row['userid']; 
+                    $sqft =$row['sqft']; 
+                    $category =$row['category'];
+
+                    echo "
+                    <h3>$name</h3><br>
+                    <h3>$address</h3><br>
+                    <h3>$type</h3><br>
+                    <h3>$description</h3><br>
+                    
+                    ";
+                }
+            }
+            ?>
                <h4>Property Video</h4>
                <iframe width="100%" height="480" src="https://www.youtube.com/embed/CegXQps0In4" frameborder="0" allowfullscreen></iframe>
                <h4>Property Map</h4>
                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6851.201919469417!2d-86.11773906635584!3d33.47324776828677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x888bdb60cc49c571%3A0x40451ca6baf275c7!2s36008+AL-77%2C+Talladega%2C+AL+35160%2C+USA!5e0!3m2!1sbn!2sbd!4v1460452919256" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-             <!-- ############################################ -->
-              </div>
+             </div>
              <!-- Properties social share -->
              <div class="aa-properties-social">
                <ul>
@@ -188,10 +214,76 @@
                  <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
                </ul>
              </div>
+             <!-- Nearby properties -->
+             <div class="aa-nearby-properties">
+               <div class="aa-title">
+                 <h2>Nearby Properties</h2>
+                 <span></span>
+               </div>
+               <div class="aa-nearby-properties-area">
+                 <div class="row">
+                   <div class="col-md-6">
+                     <article class="aa-properties-item">
+                        <a class="aa-properties-item-img" href="#">
+                          <img alt="img" src="img/item/1.jpg">
+                        </a>
+                        <div class="aa-tag for-sale">
+                          For Sale
+                        </div>
+                        <div class="aa-properties-item-content">
+                          <div class="aa-properties-info">
+                            <span>5 Rooms</span>
+                            <span>2 Beds</span>
+                            <span>3 Baths</span>
+                            <span>1100 SQ FT</span>
+                          </div>
+                          <div class="aa-properties-about">
+                            <h3><a href="#">Appartment Title</a></h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
+                          </div>
+                          <div class="aa-properties-detial">
+                            <span class="aa-price">
+                              $35000
+                            </span>
+                            <a class="aa-secondary-btn" href="#">View Details</a>
+                          </div>
+                        </div>
+                      </article>
+                   </div>
+                   <div class="col-md-6">
+                     <article class="aa-properties-item">
+                      <a class="aa-properties-item-img" href="#">
+                        <img alt="img" src="img/item/2.jpg">
+                      </a>
+                      <div class="aa-tag for-sale">
+                        For Sale
+                      </div>
+                      <div class="aa-properties-item-content">
+                        <div class="aa-properties-info">
+                          <span>5 Rooms</span>
+                          <span>2 Beds</span>
+                          <span>3 Baths</span>
+                          <span>1100 SQ FT</span>
+                        </div>
+                        <div class="aa-properties-about">
+                          <h3><a href="#">Appartment Title</a></h3>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
+                        </div>
+                        <div class="aa-properties-detial">
+                          <span class="aa-price">
+                            $35000
+                          </span>
+                          <a class="aa-secondary-btn" href="#">View Details</a>
+                        </div>
+                      </div>
+                    </article>
+                   </div>
+                 </div>
+               </div>
+
+             </div>
+
             </div>           
-          </div>
-        </div>
-                       
           </div>
         </div>
         <!-- Start properties sidebar -->
