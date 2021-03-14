@@ -28,8 +28,8 @@
         <?php 
           // $stmt = $conn->prepare("Select name,price,type,address,image,sqft from property");
           // $stmt->bind_result($pname,$price,$ptype,$paddress,$pimage,$sqft);
-          $stmt = $conn->prepare("Select name,price,type,address,image,sqft,description,category from property;");
-          $stmt->bind_result($pname,$price,$ptype,$paddress,$pimage,$sqft,$description,$category);
+          $stmt = $conn->prepare("Select pid,name,price,type,address,image,sqft,description,category from property;");
+          $stmt->bind_result($pid,$pname,$price,$ptype,$paddress,$pimage,$sqft,$description,$category);
           $stmt->execute();
           $stmt->store_result();
           $result_size=$stmt->num_rows;
@@ -226,9 +226,10 @@
                   </div>
                   <div class='aa-properties-detial'>
                     <span class='aa-price'>
-                      $ $price
+                      $$price
                     </span>
-                    <a href='#' class='aa-secondary-btn'>View Details</a>
+
+                    <a href='/PropertyDalal/properties-detail.php?pid=$pid' class='aa-secondary-btn'>View Details</a>
                   </div>
                 </div>
               </article>

@@ -85,8 +85,13 @@
           <div class="aa-properties-content">    
             <div class="aa-properties-details">
             <?php
-           
             $propid=11;
+            if(isset($_GET['pid']) && is_numeric($_GET['pid']))
+            {
+              echo is_numeric($_GET['pid']);
+              // echo is_numeric(intval($_GET['pid']));
+              $propid=$_GET['pid'];
+            }
             $stmt = $conn->prepare("Select images from details where proid='$propid'");
             if($stmt->execute() === TRUE)
             {
@@ -144,7 +149,10 @@
                 }
                 
             }
-            ?>  
+            ?>
+
+            <button type="button" id="btn_intrsted" onclick="change();" class="btn btn-primary btn-lg" >I'm Interested</button>
+            
             <h4>Property Video</h4>
                <iframe width='100%' height='480' src='https://www.youtube.com/embed/CegXQps0In4' frameborder='0' allowfullscreen></iframe>
                <h4>Property Map</h4>
@@ -213,4 +221,11 @@
   <script src="js/custom.js"></script> 
 
   </body>
+  <script>
+    function change(){
+      document.getElementById("btn_intrsted").style="background:black";
+      document.getElementById("btn_intrsted").innerHTML="Okay";
+
+    }
+  </script>
 </html>
