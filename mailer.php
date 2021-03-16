@@ -78,7 +78,7 @@
             return 0;
         }
     }
-    function passwordmail($email,$password){
+    function passwordmail($email){
         GLOBAL $otp_by_mailer;
         echo $email;
         require 'PHPMailer/class.phpmailer.php';
@@ -101,10 +101,12 @@
             $mail->addAddress($email);     //Add a recipient
             
         
+                                           //Set email format to HTML
             $rndno=rand(100000, 999999);
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->Subject = 'Property Dalal';
-            $mail->Body    = 'hi <br> your password is '.$password;
+            $mail->Body    = 'Welcome to Property Dalal Your One time verification code is '.$rndno;
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
             $otp_by_mailer=$rndno;
             $mail->send();

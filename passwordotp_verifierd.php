@@ -1,12 +1,65 @@
+<?php
+    session_start();
 
+    require 'connection.php';
+   
+
+    if(isset($_POST['otp_by_user'])){
+
+        echo $_SESSION['pass1'];
+
+        if($_SESSION['otp_by_mailer']==($_POST['otp_by_user'])){
+            echo "Verified Successfully...";
+
+            $stmt = $conn->prepare("update Users set password=? where email=?;");
+            $stmt->bind_param('ss',$_SESSION['pass'],$_SESSION['email']);
+            $stmt->execute();
+            echo $_SESSION['pass'];
+            print_r($_SESSION);
+
+             //header("Location: http://".$_SERVER['SERVER_NAME']."/PropertyDalal/passwordotp_verifierd.php");
+            echo "<div class='alert alert-success text-center'>";
+            echo "OTP verified successfully";
+            echo "</div>";
+            echo "<form action='signin.php'>";
+            echo  "<div class='aa-single-submit'>
+            <input type='submit' value='Go to Login' name='login'>                    
+            </div></form>";
+
+            
+                                
+        }
+        else{
+            unset($_POST['otp_by_user']);
+            echo "<div class='alert alert-danger text-center'>";
+            echo "Wrong OTP Entered.<br>Please Try Again.<br>";
+            echo "</div>";
+            
+            
+            //header("Location: http://".$_SERVER['SERVER_NAME']."/PropertyDalal/passwordotp_verifierd.php");
+        }
+    }
+    else
+    {
+
+    
+    
+?>
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
+    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Home Property | Signin</title>
+    <title>Home Property | Verify OTP</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -43,52 +96,44 @@
   
 
   </head>
-  <body>
+  <body>   
   <section id="aa-signin">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="aa-signin-area">
             <div class="aa-signin-form">
+            
+            
+                      
               <div class="aa-signin-form-title">
-                <a class="aa-property-home" href="index.html">Property Dalal</a>
-                <?php 
-                session_start();
-                if(isset($_SESSION['invalid_user'])  )//&& $_SESSION['invalid_user']==1
-                {
-                  unset($_SESSION['invalid_user']);
-                  echo "<div class=' alert-danger text-center'><br>Invalid Email/Password. <br><br></div>";
-                }
-                ?>
-                <h4>Sign in to your account</h4>
-              </div>
-              <form class="contactform" name="form_login" method="POST" action="./signin_handler.php">                                                 
-                <div class="aa-single-field">
-                  <label for="email">Email <span class="required">*</span></label>
-                  <input type="email" required="required" aria-required="true" value="" name="email">
+                <p class="aa-property-home" >Property Dalal</p>
                 </div>
-                <div class="aa-single-field">
-                  <label for="password">Password <span class="required">*</span></label>
-                  <input type="password" name="password" required="required"> 
+                
+                    
+                <h4 class="aa-signin-form-title">Enter the OTP received in your Email</h4>
+              
+              <form class="contactform" method="POST" action="#">                                                 
+                <div class=".col-sm-6 aa-single-field">
+                    <label for="name">OTP <span class="required">*</span></label>
+                    <input type="number" style="width: 100%;" required="required" aria-required="true" value="" name="otp_by_user">
                 </div>
-                <div class="aa-single-field">
-                <label>
-                  <input type="checkbox" name="remember"> Remember me
-                </label>                                                          
-                </div> 
+                
+                
+                
                 <div class="aa-single-submit">
-                  <input type="submit" value="Send Message" class="aa-browse-btn" name="submit">  
-                  <p>Don't Have A Account Yet? <a href="register.php">CREATE NOW!</a></p>
-                  <p>Forgot password <a href="forgotpassword.php">Change Password</a></p>
+                  <input type="submit" value="Verify OTP" name="submit">                    
                 </div>
               </form>
+              
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  
+  </section> 
+
+
   <!-- jQuery library -->
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
   <script src="js/jquery.min.js"></script>   
@@ -107,3 +152,7 @@
   
   </body>
 </html>
+
+<?php
+    }
+    ?>
