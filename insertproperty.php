@@ -129,12 +129,12 @@
                 </div>
                 
                 <div class="aa-single-field">
-                  <label for="text" class="col-lg-2 control-label">Features (Comma-Separated)</label>
+                  <label for="text" class="col-lg-2 control-label">Features: (Comma-Separated)</label>
                   <input type="text" name="features" class="col-lg-10 form-control"  placeholder="eg. Bedroom:3 , Bathroom:2 , Garden:Yes , Garage:Yes , etc...">
                 </div>
 
                 <div class="aa-single-field">
-                  <label for="text" class="col-lg-2 control-label">Monthly Charge</label>
+                  <label for="text" class="col-lg-2 control-label">Price</label>
                   <input type="number" name="price" class="col-lg-10 form-control"  placeholder="Monthly Charge">
                 </div>
 
@@ -143,7 +143,7 @@
                   <input type="number" name="sqft" class="col-lg-10 form-control"  placeholder="Size in Square Feet">
                 </div>
                 
-                <div class="aa-single-field">
+                <div class="aa-single-field ">
                   <button type="submit" name="submit" class="col-3 btn btn-dark">Submit</button>
                 </div>
                 </form>

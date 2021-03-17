@@ -86,6 +86,7 @@
             <div class="aa-properties-details">
             <?php
             $propid=11;
+            print_r($_SESSION);
             if(isset($_GET['pid']) && is_numeric($_GET['pid']))
             {
               echo is_numeric($_GET['pid']);
@@ -109,12 +110,13 @@
                 echo "</div>";
             }
             echo "<div class='aa-properties-info'>";
+            
             $stmt = $conn->prepare("Select * from property where pid='$propid'");
             if($stmt->execute() === TRUE)
             {
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {
-                   
+                    
                     $name =$row['name'];
                     $address =$row['address'];
                     $type =$row['type'];
@@ -124,6 +126,11 @@
                     $userid =$row['userid']; 
                     $sqft =$row['sqft']; 
                     $category =$row['category'];
+                    $features=explode(',',$row['features']);
+                    $features_string="";
+                    foreach($features as $ff){
+                      $features_string.="<li>$ff<//li>";
+                    }
                     echo "
                       <h2>$name</h2>
                       <h4>$address</h2>
@@ -133,17 +140,7 @@
                       <p>$description</p>
                       <h4>Propery Features</h4>
                       <ul>
-                        <li>4 Bedroom</li>
-                        <li>3 Baths</li>
-                        <li>Kitchen</li>
-                        <li>Air Condition</li>
-                        <li>Belcony</li>
-                        <li>Gym</li>
-                        <li>Garden</li>
-                        <li>CCTV</li>
-                        <li>Children Play Ground</li>
-                        <li>Comunity Center</li>
-                        <li>Security System</li>
+                        $features_string  
                       </ul>";
                 }
             }
@@ -211,10 +208,33 @@
   <script src="js/custom.js"></script> 
 
   </body>
-  <script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+    function sendRequest(url, data, callback){
+		
+    $.ajax({
+        data:data,
+        url:url,
+        method:"POST",
+        success:function (response){
+               callback(response.message,"danger");
+           
+        }
+
+    });
+    
+  }
+
     function change(){
       document.getElementById("btn_intrsted").style="background:black";
       document.getElementById("btn_intrsted").value="Okay";
+      var data={
+        userid:"<?php echo $_SESSION['userid'];?>",
+        propid:"<?php echo $_GET['pid'];?>"
+      };
+
+      sendRequest("IntrestedUserHandler.php",data,()=>{} );
     }
   </script>
+  
 </html>
