@@ -242,8 +242,12 @@ jQuery(function($){
           document.getElementById('skip-value-upper2')
         ];
 
+
+        
         skipSlider2.noUiSlider.on('update', function( values, handle ) {
           skipValues2[handle].innerHTML = values[handle];
+          document.getElementById('upper_range_hidden').value=document.getElementById('skip-value-upper2').value;
+          document.getElementById('lower_range_hidden').value=document.getElementById('skip-value-lower2').value;
         });
       }
     });

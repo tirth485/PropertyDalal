@@ -28,7 +28,8 @@
         $sqft=$_POST['sqft'];
         $userid=$_SESSION['userid'];
         $category=$_POST['Category'];
-        $query="INSERT INTO property (name,address,type,image,description,price,userid,sqft,category) VALUES ('$name','$address','$type','$temp_file','$description','$price','$userid','$sqft','$category')";
+        $features=$_POST['features'];
+        $query="INSERT INTO property (name,address,type,image,description,price,features,userid,sqft,category) VALUES ('$name','$address','$type','$temp_file','$description','$price','$features','$userid','$sqft','$category')";
         $insert=$conn->query($query);
         $last_id = $conn->insert_id;
         $c=count($_FILES['property_images']['name']);

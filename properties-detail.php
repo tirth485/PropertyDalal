@@ -104,7 +104,7 @@
                 
                 echo " <div class='aa-properties-details-img'>";
                 foreach($image_array as $i){
-                  echo " <img src='uploads/$i' alt='img'> ";
+                  echo "<img src='uploads/$i' alt='img'>";
                 }
                 echo "</div>";
             }
@@ -144,27 +144,23 @@
                         <li>Children Play Ground</li>
                         <li>Comunity Center</li>
                         <li>Security System</li>
-                      </ul>
-                    ";
+                      </ul>";
                 }
-                
             }
             ?>
-
-            <button type="button" id="btn_intrsted" onclick="change();" class="btn btn-primary btn-lg" >I'm Interested</button>
+            
+            <input type="submit" id="btn_intrsted" onclick="change();" class="btn btn-primary btn-lg" value="I'm Interested">
             
             <h4>Property Video</h4>
-               <iframe width='100%' height='480' src='https://www.youtube.com/embed/CegXQps0In4' frameborder='0' allowfullscreen></iframe>
-               <h4>Property Map</h4>
-               <iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6851.201919469417!2d-86.11773906635584!3d33.47324776828677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x888bdb60cc49c571%3A0x40451ca6baf275c7!2s36008+AL-77%2C+Talladega%2C+AL+35160%2C+USA!5e0!3m2!1sbn!2sbd!4v1460452919256' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>
-             <!-- ############################################ -->
-              </div>      
-                     
+              <iframe width='100%' height='480' src='https://www.youtube.com/embed/CegXQps0In4' frameborder='0' allowfullscreen></iframe>
+              <h4>Property Map</h4>
+              <iframe src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6851.201919469417!2d-86.11773906635584!3d33.47324776828677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x888bdb60cc49c571%3A0x40451ca6baf275c7!2s36008+AL-77%2C+Talladega%2C+AL+35160%2C+USA!5e0!3m2!1sbn!2sbd!4v1460452919256' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>
+              <!-- ############################################ -->
+            </div>      
           </div>
-        </div>
-                       
-          </div>
-        </div>
+        </div>                 
+      </div>
+    </div>
 
  
   <!-- Footer -->
@@ -178,6 +174,7 @@
               <div class="aa-footer-left">
                <p>Designed by <a rel="nofollow" href="http://www.markups.io/">MarkUps.io</a></p>
               </div>
+              <h2 style="color:crimson">
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12">
               <div class="aa-footer-middle">
@@ -204,28 +201,20 @@
   </footer>
   <!-- / Footer -->
 
-  <!-- jQuery library -->
-  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+ 
   <script src="js/jquery.min.js"></script>   
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="js/bootstrap.js"></script>   
-  <!-- slick slider -->
   <script type="text/javascript" src="js/slick.js"></script>
-  <!-- Price picker slider -->
   <script type="text/javascript" src="js/nouislider.js"></script>
-   <!-- mixit slider -->
   <script type="text/javascript" src="js/jquery.mixitup.js"></script>
-  <!-- Add fancyBox -->        
   <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
-  <!-- Custom js -->
   <script src="js/custom.js"></script> 
 
   </body>
   <script>
     function change(){
       document.getElementById("btn_intrsted").style="background:black";
-      document.getElementById("btn_intrsted").innerHTML="Okay";
-
+      document.getElementById("btn_intrsted").value="Okay";
     }
   </script>
 </html>

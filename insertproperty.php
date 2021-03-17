@@ -2,7 +2,7 @@
 <html lang="en">
 <?php 
   session_start();
- require('header.php');
+ require('header_small.php');
   
   if (isset($_SESSION['userid'])){
     //User has logged in so property can be inserted...
@@ -129,12 +129,17 @@
                 </div>
                 
                 <div class="aa-single-field">
-                  <label for="inputPassword" class="col-lg-2 control-label">Monthly Charge</label>
+                  <label for="text" class="col-lg-2 control-label">Features (Comma-Separated)</label>
+                  <input type="text" name="features" class="col-lg-10 form-control"  placeholder="eg. Bedroom:3 , Bathroom:2 , Garden:Yes , Garage:Yes , etc...">
+                </div>
+
+                <div class="aa-single-field">
+                  <label for="text" class="col-lg-2 control-label">Monthly Charge</label>
                   <input type="number" name="price" class="col-lg-10 form-control"  placeholder="Monthly Charge">
                 </div>
 
                 <div class="aa-single-field">
-                  <label for="inputPassword" class="col-lg-2 control-label">Size of Property</label>
+                  <label for="text" class="col-lg-2 control-label">Size of Property</label>
                   <input type="number" name="sqft" class="col-lg-10 form-control"  placeholder="Size in Square Feet">
                 </div>
                 
