@@ -65,6 +65,7 @@
   <!-- End slider  -->
 
   <!-- Advance Search -->
+  <form name="frmSearch" method="post" action="advancesearch.php">
   <section id="aa-advance-search">
     <div class="container">
       <div class="aa-advance-search-area">
@@ -73,45 +74,32 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="aa-single-advance-search">
-                  <input type="text" placeholder="Type Your Location">
+                  <input type="text" name="city" placeholder="Type Your Location">
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="aa-single-advance-search">
-                  <select>
+                  <select name="category">
                    <option value="0" selected>Category</option>
-                    <option value="1">Flat</option>
-                    <option value="2">Land</option>
-                    <option value="3">Plot</option>
-                    <option value="4">Commercial</option>
+                    <option value="flat">Flat</option>
+                    <option value="land">Land</option>
+                    <option value="plot">Plot</option>
+                    <option value="comercial">Commercial</option>
                   </select>
                 </div>
               </div>
-              <div class="col-md-2">
+              <div class="col-md-3">
                  <div class="aa-single-advance-search">
-                  <select>
+                  <select name="type">
                     <option value="0" selected>Type</option>
-                    <option value="1">Flat</option>
-                    <option value="2">Land</option>
-                    <option value="3">Plot</option>
-                    <option value="4">Commercial</option>
+                    <option value="Sell">sell</option>
+                    <option value="Rent">rent</option>
                   </select>
               </div>
               </div>
-              <div class="col-md-2">
-                 <div class="aa-single-advance-search">
-                  <select>
-                    <option value="0" selected>Type</option>
-                    <option value="1">Flat</option>
-                    <option value="2">Land</option>
-                    <option value="3">Plot</option>
-                    <option value="4">Commercial</option>
-                  </select>
-              </div>
-              </div>
-              <div class="col-md-2">
+              <div class="col-md-3">
                 <div class="aa-single-advance-search">
-                  <input class="aa-search-btn" type="submit" value="Search">
+                  <input class="aa-search-btn" type="submit" value="Search" name="submit">
                 </div>
               </div>
             </div>
@@ -119,12 +107,13 @@
          <div class="aa-advance-search-bottom">
            <div class="row">
             <div class="col-md-6">
+            
               <div class="aa-single-filter-search">
                 <span>AREA (SQ)</span>
                 <span>FROM</span>
                 <span id="skip-value-lower" class="example-val">30.00</span>
                 <span>TO</span>
-                <span id="skip-value-upper" class="example-val">100.00</span>
+                <span id="skip-value-upper" class="example-val">10000.00</span>
                 <div id="aa-sqrfeet-range" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
                 </div>                  
               </div>
@@ -133,9 +122,9 @@
               <div class="aa-single-filter-search">
                 <span>PRICE ($)</span>
                 <span>FROM</span>
-                <span id="skip-value-lower2" class="example-val">30.00</span>
+                <span id="skip-value-lower2" class="example-val">100.00</span>
                 <span>TO</span>
-                <span id="skip-value-upper2" class="example-val">100.00</span>
+                <span id="skip-value-upper2" class="example-val">10000  .00</span>
                 <div id="aa-price-range" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
                 </div>      
               </div>
@@ -146,6 +135,8 @@
       </div>
     </div>
   </section>
+  </form>
+  
   <!-- / Advance Search -->
 
   <!-- About us -->
