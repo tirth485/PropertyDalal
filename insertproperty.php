@@ -91,7 +91,7 @@
                     <option value="flat">Flat</option>
                     <option value="land">Land</option>
                     <option value="plot">Plot</option>
-                    <option value="comercial">Commercial</option>
+                    <option value="comercial">Bunglow</option>
                   </select>
                 </div>
                 

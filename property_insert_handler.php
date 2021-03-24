@@ -3,9 +3,9 @@
     require('connection.php');
     if(isset($_POST['submit'])){
 
-        $name=$_POST['name'];
+        $name=mysqli_real_escape_string($conn,$_POST['name']);
         //$monthly=$_POST['monthly'];
-        $address=$_POST['address'];
+        $address=mysqli_real_escape_string($conn,$_POST['address']);
         $type=$_POST['type'];
         // echo "Post set?".($_POST["images"]);
         
@@ -28,8 +28,9 @@
         $sqft=$_POST['sqft'];
         $userid=$_SESSION['userid'];
         $category=$_POST['Category'];
-        $features=$_POST['features'];
+        $features=mysqli_real_escape_string($conn,$_POST['features']);
         $query="INSERT INTO property (name,address,type,image,description,price,features,userid,sqft,category) VALUES ('$name','$address','$type','$temp_file','$description','$price','$features','$userid','$sqft','$category')";
+       
         $insert=$conn->query($query);
         $last_id = $conn->insert_id;
         $c=count($_FILES['property_images']['name']);
