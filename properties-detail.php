@@ -135,7 +135,7 @@
                     echo "
                       <h2>$name</h2>
                       <h4>$address</h2>
-                      <span class='aa-price'>Price: $$price</span>
+                      <span class='aa-price'>Price: ₹$price</span>
                       <br>
                       <span class='aa-price'>Size: $sqft/sqft</span>
                       <p>$description</p>

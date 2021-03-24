@@ -52,7 +52,7 @@
             <h2 class='aa-top-slider-title'> $pname</h2>
             <p class='aa-top-slider-location'><i class='fa fa-map-marker'></i> $paddress</p>
             <span class='aa-top-slider-off'> $ptype</span>
-            <p class='aa-top-slider-price'>$ $price</p>
+            <p class='aa-top-slider-price'>&#8377 $price</p>
             <a href='#' class='aa-top-slider-btn'>Read More <span class='fa fa-angle-double-right'></span></a>
           </div></div>
          ";
@@ -68,7 +68,7 @@
   <!-- Advance Search -->
   <form name="frmSearch" method="post" action="advancesearch.php">
   <section id="aa-advance-search">
-    <div class="container">
+    <div class="container" >
       <div class="aa-advance-search-area">
         <div class="form">
          <div class="aa-advance-search-top">
@@ -93,19 +93,19 @@
                  <div class="aa-single-advance-search">
                   <select name="type">
                     <option value="0" selected>Type</option>
-                    <option value="Sell">sell</option>
-                    <option value="Rent">rent</option>
+                    <option value="Sell">Sell</option>
+                    <option value="Rent">Rent</option>
                   </select>
               </div>
-              </div>
-              <div class="col-md-3">
+            </div>
+            <div class="col-md-3">
                 <div class="aa-single-advance-search">
                   <input class="aa-search-btn" type="submit" value="Search" name="submit">
                 </div>
-              </div>
             </div>
           </div>
-         <div class="aa-advance-search-bottom">
+        </div>
+         <!-- <div class="aa-advance-search-bottom">
            <div class="row">
             <div class="col-md-6">
             
@@ -130,7 +130,7 @@
                 </div>      
               </div>
             </div>
-          </div>  
+          </div>   -->
          </div>
         </div>
       </div>
@@ -218,7 +218,7 @@
                   </div>
                   <div class='aa-properties-detial'>
                     <span class='aa-price'>
-                      $$price
+                    ₹$price
                     </span>
 
                     <a href='/PropertyDalal/properties-detail.php?pid=$pid' class='aa-secondary-btn'>View Details</a>

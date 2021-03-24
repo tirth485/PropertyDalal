@@ -116,7 +116,7 @@
              <li id="nav_property" class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="properties.html">PROPERTIES <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">                
-                <li><a href="properties.html">PROPERTIES</a></li>
+                
                 <li><a href="properties-detail.php">PROPERTIES DETAIL</a></li>
                 <li><a href="insertproperty.php">ADD PROPERTY</a></li>  
                 <li><a href="myproperties.php">MY PROPERTIES</a></li>  
@@ -125,7 +125,7 @@
             </li>
            
             <li id="nav_contact"><a href="contact.php">CONTACT</a></li>
-            <li id="nav_404"><a href="404.html">404 PAGE</a></li>
+            <!-- <li id="nav_404"><a href="404.html">404 PAGE</a></li> -->
           </ul>                               
         </div><!--/.nav-collapse -->       
       </div>          

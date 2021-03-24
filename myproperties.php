@@ -81,7 +81,7 @@
             {
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {
-                   
+                  $pid=$row['pid'];
                     $name =$row['name'];
                     $address =$row['address'];
                     $type =strtoupper($row['type']);
@@ -120,7 +120,7 @@
                         <img src='uploads/$image' alt='img' width='100%' height='450'>
                         </div>
                         <div class='aa-contact-top-right'>
-                        <h2>$name</h2>
+                        <a href='/PropertyDalal/properties-detail.php?pid=$pid'><h2>$name</h2></a>
                         <ul class='contact-info-list'>
                         
                             <li> <i class='fa fa-inr'></i> $price</li>
