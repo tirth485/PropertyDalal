@@ -54,6 +54,9 @@
       <div class="row">
         <div class="col-md-12">
           <div class="aa-signin-area">
+            <div>  
+              <a href="index.php"><i style="color:white;font-size: 23px;" class="fa fa-home" aria-hidden="true"> Home</i></a>
+            </div>
             <div class="aa-signin-form">
               <div class="aa-signin-form-title">
               <?php 

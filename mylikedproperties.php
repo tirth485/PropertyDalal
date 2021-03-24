@@ -8,7 +8,6 @@
   }
   require('header.php');
   require_once('connection.php');
-
   ?>
   <!-- End header section -->
   <script>
@@ -32,7 +31,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="aa-property-header-inner">
-            <h2>My Listed Properties</h2>
+            <h2>Liked Properties</h2>
           </div>
         </div>
       </div>
@@ -62,10 +61,9 @@
             -->
             </div>       
             <?php 
-            
-            
             $userid=$_SESSION['userid'];
-            $stmt = $conn->prepare("Select * from Users where userid='$userid'");
+
+            $stmt = $conn->prepare("Select email,phone from Users where userid IN ( Select userid from property where pid IN (Select propid from user_intrested where userid='$userid'))");
             
             if($stmt->execute() === TRUE)
             {
@@ -75,13 +73,14 @@
                     $phone=$row['phone'];        
                 }
             }
-
-            $stmt = $conn->prepare("Select * from property where userid='$userid'");
+            $stmt = $conn->prepare("Select * from property where pid IN (Select propid from user_intrested where userid='$userid')");
+            
+            //$stmt = $conn->prepare("Select * from property where userid='$userid'");
             if($stmt->execute() === TRUE)
             {
                 $result = $stmt->get_result();
                 while ($row = $result->fetch_assoc()) {
-                   
+                    $pid=$row['pid'];    
                     $name =$row['name'];
                     $address =$row['address'];
                     $type =strtoupper($row['type']);
@@ -120,7 +119,7 @@
                         <img src='uploads/$image' alt='img' width='100%' height='450'>
                         </div>
                         <div class='aa-contact-top-right'>
-                        <h2>$name</h2>
+                        <a href='/PropertyDalal/properties-detail.php?pid=$pid'><h2>$name</h2></a>
                         <ul class='contact-info-list'>
                         
                             <li> <i class='fa fa-inr'></i> $price</li>
@@ -147,9 +146,7 @@
  </section>
 
 
-  <!-- Footer -->
-  <?php include('footer.php'); ?>
-  <!-- / Footer -->
+ <?php include('footer.php'); ?>
 
   <!-- jQuery library -->
   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->

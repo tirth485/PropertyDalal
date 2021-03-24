@@ -1,6 +1,4 @@
-<?php 
-  session_start(); 
-?>
+
   <html>
     <head>
     
@@ -46,9 +44,7 @@
   </head>
   <body class="aa-price-range">  
   <!-- Pre Loader -->
-  <div id="aa-preloader-area">
-    <div class="pulse"></div>
-  </div>
+  
   <!-- SCROLL TOP BUTTON -->
     <a class="scrollToTop" href="#"><i class="fa fa-angle-double-up"></i></a>
   <!-- END SCROLL TOP BUTTON -->
@@ -77,7 +73,7 @@
                     
                     
                     if(isset($_SESSION['userid']) && isset($_SESSION['name'])){
-                      echo "<a href='#' class='aa-register'>".$_SESSION['userid']."</a>";
+                      // echo "<a href='#' class='aa-register'>".$_SESSION['userid']."</a>";
                       echo "<a href='#' class='aa-register'>".$_SESSION['name']."</a>";
                       //Logout User
                       echo "<a href='logout.php' class='aa-login'>Logout</a>";
@@ -110,7 +106,7 @@
           </button>
           <!-- LOGO -->                                               
           <!-- Text based logo -->
-          <a class="navbar-brand aa-logo" href="index.php"> Home <span>Property</span></a>
+          <a class="navbar-brand aa-logo" href="index.php"> Property <span>Dalal</span></a>
           <!-- Image based logo -->
           <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/logo.png" alt="logo"></a> -->                     
         </div>
@@ -124,6 +120,7 @@
                 <li><a href="properties-detail.php">PROPERTIES DETAIL</a></li>
                 <li><a href="insertproperty.php">ADD PROPERTY</a></li>  
                 <li><a href="myproperties.php">MY PROPERTIES</a></li>  
+                <li><a href="mylikedproperties.php">LIKED PROPERTIES</a></li> 
               </ul>
             </li>
            

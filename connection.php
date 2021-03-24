@@ -5,7 +5,7 @@ $username = "UMHtrZaysp";
 $password = "3N3N6nsb7Z";
 $database = "UMHtrZaysp";
 // Create connection
-$conn = new mysqli($servername, $username, $password,$database);
+$conn = new mysqli($servername, $username, $password,$database);  
 // echo $_SERVER['HTTP_HOST'];
 // Check connection
 if ($conn->connect_error) {
