@@ -75,9 +75,8 @@
                 <div class="aa-header-right">
                   <?php
                     
-                    
                     if(isset($_SESSION['userid']) && isset($_SESSION['name'])){
-                      echo "<a href='#' class='aa-register'>".$_SESSION['userid']."</a>";
+                      // echo "<a href='#' class='aa-register'>".$_SESSION['userid']."</a>";
                       echo "<a href='#' class='aa-register'>".$_SESSION['name']."</a>";
                       //Logout User
                       echo "<a href='logout.php' class='aa-login'>Logout</a>";

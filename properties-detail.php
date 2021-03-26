@@ -3,6 +3,7 @@
 <?php 
   session_start();
   require('header.php');
+  
   require_once('connection.php');
   ?>
   <head>
@@ -36,7 +37,7 @@
     <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>    
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     
-
+    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -46,6 +47,30 @@
   
 
   </head>
+  <script>
+$(document)
+    .ready(function () {
+    $('.form-1')
+        .jqTransform();
+    $('.slider')
+        ._TMS({
+        show: 0,
+        pauseOnHover: true,
+        prevBu: '.prev',
+        nextBu: '.next',
+        playBu: false,
+        duration: 1000,
+        preset: 'fade',
+        pagination: true,
+        pagNums: false,
+        slideshow: 7000,
+        numStatus: false,
+        banners: false,
+        waitBannerAnimation: false,
+        progressBar: false
+    })
+});
+</script>
   <script>
     function change_active(){
       var someElement= document.getElementById("nav_property");
@@ -58,9 +83,7 @@
     <a class="scrollToTop" href="#"><i class="fa fa-angle-double-up"></i></a>
   <!-- END SCROLL TOP BUTTON -->
 
-
   <!-- Start Proerty header  -->
-
   <section id="aa-property-header">
     <div class="container">
       <div class="row">
@@ -104,12 +127,14 @@
                 array_push($image_array,$row['images']);
                 }
                 
-                echo " <div class='aa-properties-details-img'>";
-                foreach($image_array as $i){
-                  echo "<img src='uploads/$i' alt='img'>";
-                }
-                echo "</div>";
+                echo "<div class='carousel-inner'><div id='demo' class='carousel slide' data-ride='carousel'>";
+                  foreach($image_array as $i){
+                    echo "<div class='carousel-item'>
+                    <img src='uploads/$i' alt='Chicago' width='1100' height='500'>
+                  </div>";
+                 }
             }
+           
             echo "<div class='aa-properties-info'>";
             
             $stmt = $conn->prepare("Select * from property where pid='$propid'");
