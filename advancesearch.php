@@ -63,24 +63,25 @@ require_once('connection.php');
 
             if(isset($_POST['city']))
             $city=$_POST['city'];
+            $query="SELECT * FROM property WHERE";
 
             if(!empty($_POST["submit"])) 
             {
                 if(isset($category))
                 {
-                $query = "
-                    SELECT * FROM property WHERE category= '".$category."'";
+                $query .= " category= '".$category."'";
                 }
                 if(isset($type))
                 {
-                    $query .= "AND type='".$type."'";
+                    $query .= " OR type='".$type."'";
                 }
-                if(isset($type))
+                if(isset($city))
                 {
-                    $query .="AND address LIKE '%". $city . "%' ";
+                    $query .=" OR address LIKE '%". $city . "%' ";
                 }
                 $stmt = $conn->prepare($query);
             $result_counter=0;   
+            // echo $query;
             if($stmt->execute() === TRUE)
             {
                
