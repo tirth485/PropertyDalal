@@ -48,7 +48,7 @@
               </div>
               <div class="aa-contact-top-right">
                 <h2>Contact</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae placeat aspernatur aperiam, quisquam voluptas enim tempore ab itaque nam modi eos corrupti distinctio nobis labore dolorum quae tenetur. Sapiente, sequi.</p>
+                <p>Property Dalal deals with every aspect of the consumers’ needs in the real estate industry. It is an online forum where buyers, sellers and brokers/agents can exchange information about real estate properties quickly, effectively and inexpensively. At Property Dalal, you can advertise a property, search for a property, browse through properties, build your own property microsite, and keep yourself updated with the latest news and trends making headlines in the realty sector.</p>
                 <ul class="contact-info-list">
                   <li> <i class="fa fa-phone"></i> 7874720983</li>
                   <li> <i class="fa fa-envelope-o"></i> info@propertydalal.ac.in</li>
